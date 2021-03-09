@@ -31,14 +31,14 @@ namespace ALR
         {
             var body = $@"Name: {data.Name}
                         Name: {data.Name}
-                        Phone: {data.Phone}
-                        Email: {data.Email}
+                        Phone: {data.Phone ?? "-"}
+                        Email: {data.Email ?? "-"}
                         LeelooId: {data.Id}
                         LeelooLink: https://app.leeloo.ai/chats/all/{data.Id}/?personCard=true
-                        Utm_source: {data.UtmMarks.UtmSource}
-                        Utm_medium: {data.UtmMarks.UtmMedium}
-                        Utm_campaign: {data.UtmMarks.UtmCampaign}
-                        Utm_content: {data.UtmMarks.UtmContent}
+                        Utm_source: {data.UtmMarks.UtmSource ?? "-"}
+                        Utm_medium: {data.UtmMarks.UtmMedium ?? "-"}
+                        Utm_campaign: {data.UtmMarks.UtmCampaign ?? "-"}
+                        Utm_content: {data.UtmMarks.UtmContent ?? "-"}
                         Roistat: {data.UtmMarks.UtmContent}
 
                         "; //Empty string at the end is important fro amocrm parser
@@ -56,6 +56,7 @@ namespace ALR
 
     public class LeelooModel
     {
+        [JsonProperty("person_id")]
         public string Id { get; set; }
         public string Name { get; set; }
         public string Phone { get; set; }
